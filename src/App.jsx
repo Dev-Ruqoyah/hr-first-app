@@ -1,36 +1,42 @@
 import React, { useState } from "react";
-const App = () =>{
-  const [name,setName] = useState("")
-  const myFunc2 = (e) =>{
-    setName(e.target.value)
-  }
-  const[num,setNum] = useState("")
-  const myFunc = (e,val) =>{
-    console.log(e,val);
-    let a = val + 1
-    setNum(a)
+const App = ()=>{
+  // false,0,undefined,null,"",NAN
+  const [nums,setNum] = useState([2,4,5,6,7])
+  const [val,setVal] = useState("")
+  const addNum = () =>{
+    // console.log(e);
+    
+    setNum([...nums,val])
+    // console.log(addNum);
     
   }
-
-  const [names,setNames] = useState([]);
-  const getName = () =>{
-    setNames([...names,name])
+  const deleteNum = (ind) =>{
+    let result = nums.filter((num,index) => index !== ind)
+    console.log(result);
+    // console.log(num);
+    
+    
+    setNum(result)
   }
-
-  
   return(
     <>
-       <button onClick={(e) =>myFunc(e,5)}>Click me</button> 
-      <p>{num}</p>
-      <input type="text" placeholder="Type a name" onChange={(e) =>myFunc2(e)} />
-      <p>{name}</p>
-      <button onClick={getName}>Get name</button>
-      <p>{names.map(name =>(
-        <li>{name}</li>
-      ))}</p>
+      <div>
+        {nums.length ?nums.map((num,i) =>(
+          <div>
+          <p key={i}>I have {num} {num >1? "hijabs":"hijab"}</p>
+          <button onClick={()=>deleteNum(i)}>Delete</button>
+          </div>
+        ))
+      :
+      <p>No Values Added Yet</p>
+      }
+      </div>
 
+      <div>
+        <input type="text" onChange={(e)=>setVal(e.target.value)} />
+        <button onClick={addNum}>Add num</button>
+      </div>
     </>
   )
 }
-
 export default App;
