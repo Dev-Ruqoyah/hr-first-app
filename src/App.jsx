@@ -1,42 +1,74 @@
 import React, { useState } from "react";
-const App = ()=>{
-  // false,0,undefined,null,"",NAN
-  const [nums,setNum] = useState([2,4,5,6,7])
-  const [val,setVal] = useState("")
-  const addNum = () =>{
-    // console.log(e);
-    
-    setNum([...nums,val])
-    // console.log(addNum);
+const App = () =>{
+  const[name,setName] = useState("")
+  const[dept,setDept] = useState("")
+  const[school,setSchool] = useState("")
+  const [member,setMember] = useState([])
+  const addMember = () =>{
+    if(name === "" || dept === "" || school === ""){
+      alert("Enter a value")
+    }else{
+      let student = {
+        "name":name,
+        "dept": dept,
+        "school":school
+      }
+      console.log(student);
+      
+      setMember([...member,student])
+      console.log([...member,student]);
+    }
+
     
   }
-  const deleteNum = (ind) =>{
-    let result = nums.filter((num,index) => index !== ind)
-    console.log(result);
-    // console.log(num);
+  const remMember = (ind) =>{
+    let result = member.filter((mem,i) => i !== ind)
+    console.log(ind);
     
-    
-    setNum(result)
+    setMember(result)
   }
   return(
     <>
-      <div>
-        {nums.length ?nums.map((num,i) =>(
-          <div>
-          <p key={i}>I have {num} {num >1? "hijabs":"hijab"}</p>
-          <button onClick={()=>deleteNum(i)}>Delete</button>
-          </div>
-        ))
-      :
-      <p>No Values Added Yet</p>
-      }
+      <div className="container">
+        <input type="text" placeholder="Enter a name" onChange={(e)=>setName(e.target.value)} />
+        <input type="text" placeholder="Your Department" onChange={(e)=>setDept(e.target.value)} />
+        <input type="text" placeholder="Your School" onChange={(e)=>setSchool(e.target.value)}/>
+        {/* <p>{name}</p>
+        <p>{dept}</p>
+        <p>{school}</p> */}
+        <button onClick={addMember}>Add Member</button>
       </div>
-
-      <div>
-        <input type="text" onChange={(e)=>setVal(e.target.value)} />
-        <button onClick={addNum}>Add num</button>
-      </div>
+       
+        <table border={1}>
+          <thead>
+            <th>s/n</th>
+            <th>Name</th>
+            <th>Dept</th>
+            <th>School</th>
+            <th>Action</th>
+          </thead>
+          {
+            member.length ?
+            member.map((mem,i) =>(
+              
+              <tbody key={i}>
+                <td>{i+1}</td>
+                <td>{mem.name}</td>
+                <td>{mem.dept}</td>
+                <td>{mem.school}</td>
+                <button onClick={() =>remMember(i)}>Delete</button>
+              </tbody>
+            ))
+            :
+            <tbody>
+              No member Yet
+            </tbody>
+          }
+        </table>
+       
+      
     </>
   )
 }
-export default App;
+
+export default App

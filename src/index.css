@@ -1,74 +1,56 @@
 *{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
 }
 .container{
-  /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 10px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.078);
+    padding: 20px;
+    /* align-items: center; */
 }
-.calculator{
-  /* border: 1px solid black; */
-  height: 283px;
-  width: 250px;
-  margin: 10% auto;
-  border-radius: 20px;
-  
+table{
+    width: 400px;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 10px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.078);
+    border-collapse: collapse;
+    /* padding: 20px; */
 }
-.screen{
-  height: 70px;
-  width: 100%;
-  background: rgb(3, 3, 41);
-border-top-left-radius: 20px;
-border-top-right-radius: 20px;
+tbody{
+    padding: 7px;
+    margin: 3px 0;
 }
-.screen p {
-  height: 100%;
-  width: 100%;
-  font-size: 40px ;
-  color: white;
-  display: flex;
-  justify-content: right;
-  align-items: center;
-}
-.content{
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  margin: 1px;
-}
-.one,.two{
-  display: flex;
-  flex-wrap: wrap;
+tbody button{
+    background: rgb(126, 0, 0);
+    color: white;
+    border: 0;
+    border-radius: 3px;
+    padding: 5px;
+    width: 80%;
+    margin: 3px;
 
-  gap: 1px;
-  /* border: 1px solid black; */
-  height: 100%;
+
 }
-.one button{
-  width: 32.8%;
-  height: 40px;
-  border: 0;
-  
+.container input{
+    height: 34px;
+    padding:0 10px;
 }
-.action{
-  background: rgb(32, 29, 29);
-  color: white;
-  font-size: 17px;
+.container button{
+    height: 34px;
+    background: rgb(2, 90, 2);
+    color: white;
+    font-size: 13px;
+    border: 0;
+    
 }
-.num{
-  color: white;
-  font-size: 17px;
-  background: grey;
-}
-.num1{
-  color: white;
-  font-size: 17px;
-  background: rgb(157, 120, 8);
-}
-.nu0{
-  flex-basis: 65.9%;
-}
-.two button{
-  width: 100%;
-  height: 40px;
-  border: 0;
+.container button:hover{
+    background: rgba(5, 86, 5, 0.852);
+    transition: 0.4s;
 }

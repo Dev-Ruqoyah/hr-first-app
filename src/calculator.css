@@ -1,0 +1,74 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.container{
+  /* height: 100vh; */
+}
+.calculator{
+  /* border: 1px solid black; */
+  height: 283px;
+  width: 250px;
+  margin: 10% auto;
+  border-radius: 20px;
+  
+}
+.screen{
+  height: 70px;
+  width: 100%;
+  background: rgb(3, 3, 41);
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+.screen p {
+  height: 100%;
+  width: 100%;
+  font-size: 40px ;
+  color: white;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.content{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin: 1px;
+}
+.one,.two{
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 1px;
+  /* border: 1px solid black; */
+  height: 100%;
+}
+.one button{
+  width: 32.8%;
+  height: 40px;
+  border: 0;
+  
+}
+.action{
+  background: rgb(32, 29, 29);
+  color: white;
+  font-size: 17px;
+}
+.num{
+  color: white;
+  font-size: 17px;
+  background: grey;
+}
+.num1{
+  color: white;
+  font-size: 17px;
+  background: rgb(157, 120, 8);
+}
+.nu0{
+  flex-basis: 65.9%;
+}
+.two button{
+  width: 100%;
+  height: 40px;
+  border: 0;
+}
