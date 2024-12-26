@@ -1,74 +1,86 @@
 import React, { useState } from "react";
-const App = () =>{
-  const[name,setName] = useState("")
-  const[dept,setDept] = useState("")
-  const[school,setSchool] = useState("")
-  const [member,setMember] = useState([])
-  const addMember = () =>{
-    if(name === "" || dept === "" || school === ""){
-      alert("Enter a value")
-    }else{
-      let student = {
-        "name":name,
-        "dept": dept,
-        "school":school
-      }
-      console.log(student);
-      
-      setMember([...member,student])
-      console.log([...member,student]);
-    }
+import { use } from "react";
+const App = () => {
+  const [proName, setProName] = useState("")
+  const [proPrice, setProPrice] = useState("")
+  const [proQuatity, setProQunatity] = useState("")
+  const [allProduct, setAllProduct] = useState([])
 
+  const addProduct = () => {
+    if(proName === "" || proPrice === "" || proQuatity === ""){
+      alert("Enter a definite value")
+    }else{
+      setAllProduct([...allProduct, { proName, proPrice, proQuatity,edit:false }])
+      setProName("")
+      setProPrice("")
+      setProQunatity("")
+    }
+   
+  }
+  const removeProduct = (inde) =>{
+    const newProduct = allProduct.filter((prod,i) => i !== inde)
+    setAllProduct(newProduct)
+  }
+  const editProName = (inde) =>{
+    const newPro = [...allProduct]
+    let result = newPro.find((_,i) => inde === i)
+    result.edit = true;
+    console.log(result);
+    
+    setAllProduct[newPro]
+    // console.log(newPro);
     
   }
-  const remMember = (ind) =>{
-    let result = member.filter((mem,i) => i !== ind)
-    console.log(ind);
-    
-    setMember(result)
-  }
-  return(
+  return (
     <>
-      <div className="container">
-        <input type="text" placeholder="Enter a name" onChange={(e)=>setName(e.target.value)} />
-        <input type="text" placeholder="Your Department" onChange={(e)=>setDept(e.target.value)} />
-        <input type="text" placeholder="Your School" onChange={(e)=>setSchool(e.target.value)}/>
-        {/* <p>{name}</p>
-        <p>{dept}</p>
-        <p>{school}</p> */}
-        <button onClick={addMember}>Add Member</button>
-      </div>
-       
-        <table border={1}>
+      <div>
+
+        <div className="container">
+          <input type="text" value={proName} placeholder="Enter Product" onChange={(e) => setProName(e.target.value)} />
+
+          <input type="text" value={proQuatity} placeholder="Product Quantity" onChange={(e) => setProQunatity(e.target.value)} />
+
+          <input type="text" value={proPrice} placeholder="Product Price" onChange={(e) => setProPrice(e.target.value)} />
+          <button onClick={addProduct}>Add Product</button>
+        </div>
+
+       {allProduct.length? <table  border={1}>
           <thead>
-            <th>s/n</th>
-            <th>Name</th>
-            <th>Dept</th>
-            <th>School</th>
-            <th>Action</th>
+            <tr>
+              <th>S/n</th>
+              <th>Product Name</th>
+              <th>Product Price</th>
+              <th>Product Quantity</th>
+              <th>Delete</th>
+              <th>Edit/Save</th>
+            </tr>
           </thead>
           {
-            member.length ?
-            member.map((mem,i) =>(
-              
+            allProduct.map((product, i) => (
               <tbody key={i}>
-                <td>{i+1}</td>
-                <td>{mem.name}</td>
-                <td>{mem.dept}</td>
-                <td>{mem.school}</td>
-                <button onClick={() =>remMember(i)}>Delete</button>
+                <tr>
+                  <td>{i + 1}</td>
+                  <td>{product.edit ? <input/> : product.proName}</td>
+                  <td>{product.proPrice}</td>
+                  <td>{product.proQuatity}</td>
+                  <td>
+                    <button onClick={()=>removeProduct(i)}>Delete</button>
+                  </td>
+                  <td>
+                    {product.edit ? 
+                    <button className="save">Save</button>:
+                    <button className="save" onClick={() =>editProName(i)}>Edit</button>
+                  }
+                  </td>
+                </tr>
               </tbody>
+
             ))
-            :
-            <tbody>
-              No member Yet
-            </tbody>
-          }
-        </table>
-       
-      
+          }</table>
+        :
+        <div className="center">No product yet</div>}
+      </div>
     </>
   )
 }
-
 export default App

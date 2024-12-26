@@ -15,7 +15,7 @@
     /* align-items: center; */
 }
 table{
-    width: 400px;
+    width: 450px;
     justify-content: center;
     margin: 20px auto;
     gap: 10px;
@@ -26,6 +26,10 @@ table{
 tbody{
     padding: 7px;
     margin: 3px 0;
+}
+.center{
+    display: flex;
+    justify-content: center ;
 }
 tbody button{
     background: rgb(126, 0, 0);
@@ -49,6 +53,9 @@ tbody button{
     font-size: 13px;
     border: 0;
     
+}
+.save{
+    background: rgb(255, 191, 0) !important;
 }
 .container button:hover{
     background: rgba(5, 86, 5, 0.852);
