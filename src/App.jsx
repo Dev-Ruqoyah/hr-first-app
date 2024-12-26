@@ -4,6 +4,7 @@ const App = () => {
   const [proName, setProName] = useState("")
   const [proPrice, setProPrice] = useState("")
   const [proQuatity, setProQunatity] = useState("")
+  const [editName, setEditName] = useState("");
   const [allProduct, setAllProduct] = useState([])
 
   const addProduct = () => {
@@ -25,6 +26,17 @@ const App = () => {
     const newPro = [...allProduct]
     let result = newPro.find((_,i) => inde === i)
     result.edit = true;
+    console.log(result);
+    
+    setAllProduct[newPro]
+    // console.log(newPro);
+    
+  }
+  const saveProName = (inde) =>{
+    const newPro = [...allProduct]
+    let result = newPro.find((_,i) => inde === i)
+    result.edit = false;
+    result.proName = editName
     console.log(result);
     
     setAllProduct[newPro]
@@ -60,7 +72,7 @@ const App = () => {
               <tbody key={i}>
                 <tr>
                   <td>{i + 1}</td>
-                  <td>{product.edit ? <input/> : product.proName}</td>
+                  <td>{product.edit ? <input onClick={(e) =>setEditName(e.target.value)}/> : product.proName}</td>
                   <td>{product.proPrice}</td>
                   <td>{product.proQuatity}</td>
                   <td>
@@ -68,8 +80,9 @@ const App = () => {
                   </td>
                   <td>
                     {product.edit ? 
-                    <button className="save">Save</button>:
-                    <button className="save" onClick={() =>editProName(i)}>Edit</button>
+                    <button onClick={()=>saveProName(i)} className="save">Save</button>
+                    :
+                    <button className="save" onClick={() => editProName(i)}>Edit</button>
                   }
                   </td>
                 </tr>
