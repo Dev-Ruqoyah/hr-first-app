@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { use } from "react";
 const App = () => {
   const [proName, setProName] = useState("")
   const [proPrice, setProPrice] = useState("")
@@ -28,7 +27,7 @@ const App = () => {
     result.edit = true;
     console.log(result);
     
-    setAllProduct[newPro]
+    setAllProduct(newPro)
     // console.log(newPro);
     
   }
@@ -37,9 +36,10 @@ const App = () => {
     let result = newPro.find((_,i) => inde === i)
     result.edit = false;
     result.proName = editName
+    setEditName("")
     console.log(result);
     
-    setAllProduct[newPro]
+    setAllProduct(newPro)
     // console.log(newPro);
     
   }
@@ -72,7 +72,7 @@ const App = () => {
               <tbody key={i}>
                 <tr>
                   <td>{i + 1}</td>
-                  <td>{product.edit ? <input onClick={(e) =>setEditName(e.target.value)}/> : product.proName}</td>
+                  <td>{product.edit ? (<input onChange={(e) =>setEditName(e.target.value)}/>) : (product.proName)}</td>
                   <td>{product.proPrice}</td>
                   <td>{product.proQuatity}</td>
                   <td>
