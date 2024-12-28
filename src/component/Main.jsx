@@ -5,7 +5,7 @@ const Main = ({name,items,qty,increase}) =>{
             <p>my name is {name}</p>
             <p>I sell {items}</p>
             <p>We have {qty}</p>
-            <button onClick={()=>increase(i)}>Increment</button>
+            <button onClick={increase}>Increment</button>
         </>
     )
 }

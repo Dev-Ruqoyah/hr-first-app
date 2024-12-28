@@ -11,15 +11,21 @@ const App = () =>{
   const increment = (ind) =>{
     const newDetails= [...details]
    const result= newDetails.find((_,i) => ind === i)
-   setDetails(result)
+   
+   result.qty +=1
+   
+  //  result.qty = qty+1;
+   console.log("clicked");
+   
+   setDetails(newDetails)
 
 
   }
   return(
     <>
       <Header/>
-      {details.map(({name,goods,qty,i},i)=>(
-        <Main name={name} items={goods} qty={qty} increase={increment}/>
+      {details.map(({name,goods,qty},i)=>(
+        <Main name={name} items={goods} qty={qty} increase={()=>increment(i)}/>
       ))}
     </>
   )
