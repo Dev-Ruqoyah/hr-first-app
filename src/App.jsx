@@ -21,11 +21,16 @@ const App = () =>{
 
 
   }
+  const deleteProduct = (ind) =>{
+    const result = details.filter((detail,i) => i !== ind)
+    setDetails(result);
+
+  }
   return(
     <>
       <Header/>
       {details.map(({name,goods,qty},i)=>(
-        <Main name={name} items={goods} qty={qty} increase={()=>increment(i)}/>
+        <Main name={name} items={goods} qty={qty} increase={()=>increment(i)}  delet={()=>deleteProduct(i)}/>
       ))}
     </>
   )
