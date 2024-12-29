@@ -6,8 +6,8 @@ const Header = () =>{
         <>
         {
             lists.map((list,i) =>(
-                <ul>
-                    <li key={i}>{list}</li>
+                <ul key={i}>
+                    <li >{list}</li>
                 </ul>
             ))
         } 
