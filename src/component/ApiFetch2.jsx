@@ -1,32 +1,41 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ApiFetch2.css";
 const ApiFetch2 = () => {
   const [users, setUsers] = useState([]);
   const[eachUser,setEachUser] = useState([])
   const[isloading,setLoading] = useState(true)
   const[isloadings,setLoadings] = useState(true)
-  const fetchApi = async () => {
-    const { data } = await axios.get(
-      "https://jsonplaceholder.typicode.com/users"
-    );
-    console.log(data);
-    console.log("click");
+  const[isModal,setIsModal] = useState(false)
+  
 
-    setUsers(data);
-    setLoading(false)
-  };
+  useEffect(
+    ()=>{
+        const fetchApi = async () => {
+            const { data } = await axios.get(
+              "https://jsonplaceholder.typicode.com/users"
+            );
+            console.log(data);
+            console.log("click");
+        
+            setUsers(data);
+            setLoading(false)
+          };
+          fetchApi()
+    },[]
+  )
   const getFullDetails = async(ind) =>{
     const {data} = await axios.get(`https://jsonplaceholder.typicode.com/users/${ind}`)
 
     setEachUser(data)
     setLoadings(false)
+    setIsModal(true)
     console.log(data);
     
   }
   return (
     <>
-      <button onClick={fetchApi}>Fetch</button>
+      {/* <button onClick={fetchApi}>Fetch</button> */}
       <div className="cards">
         {!isloading?
         (users.map((user) => (
@@ -39,7 +48,7 @@ const ApiFetch2 = () => {
         (<div>Loading Details</div>)
         }
       </div>
-      <div className="card-each">
+      <div className="modal">
         {
             !isloadings?(
          

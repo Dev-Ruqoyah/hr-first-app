@@ -10,9 +10,9 @@ const App = () =>{
   return(
     <>
       {/* <Header /> */}
-      {/* <Table/>
-      <ApiFetch/> */}
-      <ApiFetch2/>
+      {/* <Table/> */}
+      <ApiFetch/>
+      {/* <ApiFetch2/> */}
      
      
     </>
