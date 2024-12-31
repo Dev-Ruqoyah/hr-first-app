@@ -12,8 +12,8 @@ const App = () =>{
     <>
       {/* <Header /> */}
       {/* <Table/> */}
-      <ApiFetch3/>
-      {/* <ApiFetch2/> */}
+      {/* <ApiFetch3/> */}
+      <ApiFetch2/>
      
      
     </>
