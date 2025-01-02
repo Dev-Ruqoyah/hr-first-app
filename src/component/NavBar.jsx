@@ -7,6 +7,7 @@ const NavBar = () => {
                 <Link to={"/"}>Home</Link>
                 <Link to={"/contact"}>Contact</Link>
                 <Link to={"/about"}>About</Link>
+                <Link to={"/form"}>Form</Link>
                 
                 <Link to={"/photos/1"}>Picture1</Link>
                 <Link to={"/photos/2"}>Picture2</Link>

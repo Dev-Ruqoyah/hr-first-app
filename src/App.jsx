@@ -9,6 +9,7 @@ import NavBar from "./component/NavBar";
 import About from "./component/About";
 import Taye from "./component/Taye";
 import Kenny from "./component/Kenny";
+import Form from "./component/Form";
 const App = () => {
   return (
     <>
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/contact/:username?/:id?" element={<Contact />} />
         <Route path="/photos/:id" element={<Photo />} />
         <Route path="*" element={<Error />} />
+        <Route path="/form" element={<Form/>}/>
 
         <Route path={"/about"} element={<About />}>
           <Route path="taye" element={<Taye />} />
