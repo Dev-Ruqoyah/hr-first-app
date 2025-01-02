@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import './calculator.css'
 
 const Calculator = () => {
-  const [num,setNum] = useState("")
+  const [num,setNum] = useState("0")
   const handleNum = (number) =>{
     // setNum(num + number)
 
@@ -23,7 +24,7 @@ const Calculator = () => {
   }
   const removeLast = () =>{
     if(num.length === 1){
-      setNum("")
+      setNum("0")
     }else{
       let result = num.slice(0,-1)
       setNum(result)

@@ -22,7 +22,7 @@ const CountDown = () => {
     return ( 
         <>
             <input type="text" onInput={(e)=>setTime(e.target.value)} />
-            <button onClick={()=>setDet(timeLap)}>Fetch</button>
+            <button onClick={()=>setDet(timeLap)}>Set CountDown</button>
             <p>{det}</p>
         </>
      );
