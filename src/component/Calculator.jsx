@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import './calculator.css'
+import { AgeContext } from "./context";
 
 const Calculator = () => {
+  const{increments} = useContext(AgeContext)
   const [num,setNum] = useState("0")
   const handleNum = (number) =>{
     // setNum(num + number)
@@ -34,6 +36,7 @@ const Calculator = () => {
  
   return (
     <>
+    <button onClick={increments}>Increase</button>
       <div className="container">
         <div className="calculator">
           <div className="screen" >
