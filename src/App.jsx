@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { act, useState } from "react";
 
 import { Route, Routes } from "react-router-dom";
 import Calculator from "./component/Calculator";
@@ -19,16 +19,19 @@ import { Provider } from "react-redux";
 
 let personSlice = createSlice({
   name:"person ",
-  initialState:{name:"Taye",dept: "computer science",age:12},
+  initialState:{name:"Taye",dept: "computer science",age:12, lang: ["English","French","Yoruba"]},
   reducers:{
     setName: (state)=>{
       state.name = "Kenny"
     },
-    setDept: (state)=>{
-      state.dept = "computer Engineering"
+    setDept: (state,actions)=>{
+      state.dept = actions.payload
     },
-    setAge:(state,action)=>{
-      state.age = action.payload;
+    setAge:(state,actions)=>{
+      state.age = actions.payload;
+    },
+    setLang:(state,actions)=>{
+        state.lang = [...state.lang,actions.payload]
     }
   }
 })
@@ -37,7 +40,7 @@ let store = configureStore({
     person:personSlice.reducer
   }
 })
-export const {setName,setDept,setAge} = personSlice.actions
+export const {setName,setDept,setAge,setLang} = personSlice.actions
 const App = () => {
   // const [age, setAge] = useState(10);
   // const increment = () => {
