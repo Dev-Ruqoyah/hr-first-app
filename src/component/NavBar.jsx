@@ -13,6 +13,7 @@ const NavBar = () => {
                 <Link to={"/photos/2"}>Picture2</Link>
                 <Link to={"/photos/3"}>Picture3</Link>
                 <Link to={"/details"}>Details</Link>
+                <Link to={"/createquestion"}>Create Question</Link>
             </div>
         </>
      );

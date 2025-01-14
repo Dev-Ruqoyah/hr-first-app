@@ -14,6 +14,7 @@ import { AgeContext } from "./component/context";
 import Details from "./component/Details";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import CreateQuestion from "./Pages/CreateQuestions";
 
 
 
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="/photos/:id" element={<Photo />} />
           <Route path="*" element={<Error />} />
           <Route path="/form" element={<Form />} />
+          <Route path="/createquestion" element={<CreateQuestion/>}/>
 
           <Route path={"/about"} element={<About />}>
             <Route path="taye" element={<Taye />} />
