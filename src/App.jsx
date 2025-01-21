@@ -1,4 +1,4 @@
-import React, { act, useState } from "react";
+import React, {  } from "react";
 
 import { Route, Routes } from "react-router-dom";
 import Calculator from "./component/Calculator";
@@ -10,11 +10,12 @@ import About from "./component/About";
 import Taye from "./component/Taye";
 import Kenny from "./component/Kenny";
 import Form from "./component/Form";
-import { AgeContext } from "./component/context";
 import Details from "./component/Details";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import CreateQuestion from "./Pages/CreateQuestions";
+import Reduser from "./Pages/UseReducer";
+import HandlingForm from "./Pages/FormReducer";
 
 
 
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="/contact/:username?/:id?" element={<Contact />} />
           <Route path="/photos/:id" element={<Photo />} />
           <Route path="*" element={<Error />} />
+          <Route path="/reducer" element={<Reduser/>}/>
           <Route path="/form" element={<Form />} />
           <Route path="/createquestion" element={<CreateQuestion/>}/>
 
@@ -68,6 +70,8 @@ const App = () => {
           </Route>
 
           <Route path="/details" element={<Details />} />
+          <Route path="/form-reducer" element={<HandlingForm/>}/>
+          
         </Routes>
         </Provider>
       {/* </AgeContext.Provider> */}

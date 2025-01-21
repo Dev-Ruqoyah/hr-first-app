@@ -6,15 +6,26 @@ const CreateQuestion = () => {
   const [option2, setOption2] = useState("");
   const [option3, setOption3] = useState("");
   const [option4, setOption4] = useState("");
+  const[answer,setAnswer] = useState("")
   const [questionnaire, setQuestionnaire] = useState([]);
 
   const submitQuestion = () => {
     const newQuestion = {
       question: question,
       options: [option1, option2, option3, option4],
+      answer:answer
     };
-    console.log(newQuestion);
-    setQuestionnaire((prev) => [...prev, newQuestion]);
+    
+    setQuestionnaire((prev)=>[...prev,newQuestion])
+    setQuestion("")
+    setOption1("")
+    setOption2("")
+    setOption3("")
+    setOption4("")
+    setAnswer("")
+    alert("Question Added Successfully")
+    // setQuestionnaire((prev) => [...prev, newQuestion]);
+    // setQuestionnaire([...questionnaire,newQuestion])
     //   console.log(questionnaire);
   };
 
@@ -25,12 +36,13 @@ const CreateQuestion = () => {
         id=""
         onInput={(e) => setQuestion(e.target.value)}
         cols="30"
+        value={question}
       ></textarea>
-      <input type="text" onInput={(e) => setOption1(e.target.value)} />
-      <input type="text" onInput={(e) => setOption2(e.target.value)} />
-      <input type="text" onInput={(e) => setOption3(e.target.value)} />
-      <input type="text" onInput={(e) => setOption4(e.target.value)} />
-      <select name="" id="">
+      <input  value={option1} type="text" onInput={(e) => setOption1(e.target.value)} />
+      <input value={option2} type="text" onInput={(e) => setOption2(e.target.value)} />
+      <input value={option3} type="text" onInput={(e) => setOption3(e.target.value)} />
+      <input value={option4} type="text" onInput={(e) => setOption4(e.target.value)} />
+      <select name="" id="" onChange={(e)=>setAnswer(e.target.value)}>
         <option value="A">A</option>
         <option value="B">B</option>
         <option value="C">C</option>
@@ -41,9 +53,10 @@ const CreateQuestion = () => {
       {questionnaire.map((question) => (
         <div key={question.index}>
           <h4>{question.question}</h4>
-          {question.options.map((option, i) => (
-            <li key={i}>{option}</li>
+          {question.options.map((option) => (
+            <li key={option.index}>{option}</li>
           ))}
+          <p>{question.answer}</p>
         </div>
       ))}
     </>
